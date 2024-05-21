@@ -20,7 +20,7 @@ lazy.setup({
 	-- importing directories
 	spec = {
 		{ import = "turner.plugins" },
-	    { import = "turner.plugins.lsp" },
+		-- import = "turner.plugins.lsp" },
 	},
 
 	-- ui config
