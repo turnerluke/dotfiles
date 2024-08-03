@@ -20,3 +20,4 @@
 ## Formatting
 #### Format the Current File
 `<leader>gf`
+**Note: Also formats on save.**
