@@ -5,6 +5,8 @@
 
 #### Open File Explorer Left
 `<C-n>`
+#### "Hop" in Files
+`<Leader>h`
 
 ## Debugging
 

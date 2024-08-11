@@ -6,10 +6,10 @@ return {
 		"mfussenegger/nvim-dap-python",
 	},
 	config = function()
-    require("dapui").setup()
+		require("dapui").setup()
 
 		local dap, dapui = require("dap"), require("dapui")
-		require('dap-python').setup("python")
+		require("dap-python").setup("python")
 
 		dap.listeners.before.attach.dapui_config = function()
 			dapui.open()
@@ -23,7 +23,7 @@ return {
 		dap.listeners.before.event_exited.dapui_config = function()
 			dapui.close()
 		end
-
+		vim.fn.sign_define("DapBreakpoint", { text = "🟥", texthl = "", linehl = "", numhl = "" })
 		vim.keymap.set("n", "<Leader>dt", ":DapToggleBreakpoint<CR>")
 		vim.keymap.set("n", "<Leader>dc", ":DapContinue<CR>")
 		vim.keymap.set("n", "<Leader>dx", ":DapTerminate<CR>")

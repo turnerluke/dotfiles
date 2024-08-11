@@ -5,6 +5,14 @@ return {
 		config = function()
 			require("mason").setup()
 		end,
+		opts = {
+			ensure_installed = {
+				"mypy",
+				"ruff",
+				"pyright",
+				"black",
+			},
+		},
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
@@ -20,10 +28,10 @@ return {
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local lspconfig = require("lspconfig")
 			lspconfig.lua_ls.setup({
-				capabilities = capabilities
+				capabilities = capabilities,
 			})
 			lspconfig.pyright.setup({
-				capabilities = capabilities
+				capabilities = capabilities,
 			})
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
