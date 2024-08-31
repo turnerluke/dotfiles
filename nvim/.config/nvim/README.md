@@ -22,3 +22,20 @@
 ## Formatting
 #### Format the Current File
 `<leader>gf`
+
+## Testing
+
+### Test Nearest
+`<leader>t`
+
+### Test File
+`<leadder>T`
+
+### Test Suite
+`<leader> a`
+
+### Test Last
+`<leader> l`
+
+### Test Visit
+`<leader> g`
