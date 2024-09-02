@@ -8,6 +8,12 @@
 #### "Hop" in Files
 `<Leader>h`
 
+## Undotree
+#### Open Telescope Unto Tree
+`<Leader>u`
+#### Restore in Undo Tree
+`<C-r>`
+
 ## Debugging
 
 #### Toggle Breakpoint
