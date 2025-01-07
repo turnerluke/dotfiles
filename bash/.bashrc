@@ -21,3 +21,6 @@ eval "$(starship init bash)"
 export WORKON_HOME=~/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
 
+# zoxide
+eval "$(zoxide init --cmd cd bash)"
+
