@@ -100,7 +100,7 @@ tooltip {
   color: @color7;
 }
 #network {
-  padding: 0px 5px;
+  padding: 0px 9px;
   transition: all 0.3s ease;
   color: @color7;
 }
