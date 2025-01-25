@@ -24,3 +24,5 @@ source /usr/bin/virtualenvwrapper.sh
 # zoxide
 eval "$(zoxide init --cmd cd bash)"
 
+# thefuck
+eval "$(thefuck --alias)"
