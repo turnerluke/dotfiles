@@ -63,4 +63,4 @@ return {
 			{ noremap = true, silent = true }
 		)
 	end,
- 
+}
