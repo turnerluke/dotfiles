@@ -20,18 +20,19 @@ return { -- Autoformat
 		},
 	},
 	opts = {
-		notify_on_error = false,
+		notify_on_error = true,
+		log_level = vim.log.levels.DEBUG,
 		format_on_save = function(bufnr)
 			if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
 				return
 			end
-			local disable_filetypes = { c = false, cpp = false }
+			local ft = vim.bo[bufnr].filetype
+			local disable_filetypes = {}
 			return {
-				timeout_ms = 500,
-				lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
+				timeout_ms = 100,
+				lsp_fallback = ft ~= "sql" and not disable_filetypes[ft],
 			}
 		end,
-
 		formatters_by_ft = {
 			css = { "prettier" },
 			html = { "prettier" },
@@ -39,9 +40,33 @@ return { -- Autoformat
 			yaml = { "prettier" },
 			markdown = { "prettier" },
 			lua = { "stylua" },
-			python = { "ruff", "isort", "black" },
+			python = { "ruff" },
 			sql = { "sqlfluff" },
 		},
+
+		-- TODO: sqlfluff still doesn't work with dbt
+		-- Custom formatter definition for sqlfluff:
+		-- This disables stdin (so a file path is passed via $FILENAME) and adds the --force flag.
+		-- formatters = {
+		-- 	sqlfluff = {
+		-- 		inherit = false,
+		-- 		command = "sqlfluff",
+		-- 		args = { "fix", "$FILENAME" },
+		-- 		stdin = false,
+		--
+		-- 		tmpfile_format = "conform.$RANDOM.$FILENAME",
+		-- 		-- Define a local helper function to find the project root
+		-- 		-- by looking for either ".sqlfluff" or "dbt_project.yml".
+		-- 		cwd = (function()
+		-- 			local function root_file(files)
+		-- 				return function(self, ctx)
+		-- 					return vim.fs.root(ctx.dirname, files)
+		-- 				end
+		-- 			end
+		-- 			return root_file({ ".sqlfluff", "dbt_project.yml" })
+		-- 		end)(),
+		-- 	},
+		-- },
 	},
 	config = function(_, opts)
 		require("conform").setup(opts)
