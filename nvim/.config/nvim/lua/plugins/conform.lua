@@ -1,13 +1,14 @@
-return { -- Autoformat
+-- conform.nvim: Central formatting manager with per-language config and save hooks
+
+return {
 	"stevearc/conform.nvim",
 	lazy = false,
 	event = { "BufReadPre", "BufNewFile" },
+
 	keys = {
 		{
 			"<leader>tF",
 			function()
-				-- If autoformat is currently disabled globally,
-				-- then enable it globally, otherwise disable it globally
 				if vim.g.disable_autoformat then
 					vim.cmd("FormatEnable")
 					vim.notify("Enabled autoformat globally")
@@ -19,9 +20,12 @@ return { -- Autoformat
 			desc = "Toggle autoformat globally",
 		},
 	},
+
 	opts = {
 		notify_on_error = true,
 		log_level = vim.log.levels.DEBUG,
+
+		-- Format on save with opt-out via global or buffer variable
 		format_on_save = function(bufnr)
 			if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
 				return
@@ -29,59 +33,56 @@ return { -- Autoformat
 			local ft = vim.bo[bufnr].filetype
 			local disable_filetypes = {}
 			return {
-				timeout_ms = 100,
+				timeout_ms = 1000,
 				lsp_fallback = ft ~= "sql" and not disable_filetypes[ft],
 			}
 		end,
+
+		-- Filetype-specific formatter configuration
 		formatters_by_ft = {
 			css = { "prettier" },
 			html = { "prettier" },
 			json = { "prettier" },
 			yaml = { "prettier" },
-			markdown = { "prettier" },
+			toml = { "prettier" },
 			lua = { "stylua" },
-			python = { "ruff" },
+			python = { "ruff" }, -- could add "black", "isort" if desired
 			sql = { "sqlfluff" },
 		},
 
-		-- TODO: sqlfluff still doesn't work with dbt
-		-- Custom formatter definition for sqlfluff:
-		-- This disables stdin (so a file path is passed via $FILENAME) and adds the --force flag.
+		-- Example override for sqlfluff with dbt support
 		-- formatters = {
-		-- 	sqlfluff = {
-		-- 		inherit = false,
-		-- 		command = "sqlfluff",
-		-- 		args = { "fix", "$FILENAME" },
-		-- 		stdin = false,
-		--
-		-- 		tmpfile_format = "conform.$RANDOM.$FILENAME",
-		-- 		-- Define a local helper function to find the project root
-		-- 		-- by looking for either ".sqlfluff" or "dbt_project.yml".
-		-- 		cwd = (function()
-		-- 			local function root_file(files)
-		-- 				return function(self, ctx)
-		-- 					return vim.fs.root(ctx.dirname, files)
-		-- 				end
-		-- 			end
-		-- 			return root_file({ ".sqlfluff", "dbt_project.yml" })
-		-- 		end)(),
-		-- 	},
+		--   sqlfluff = {
+		--     inherit = false,
+		--     command = "sqlfluff",
+		--     args = { "fix", "$FILENAME" },
+		--     stdin = false,
+		--     tmpfile_format = "conform.$RANDOM.$FILENAME",
+		--     cwd = (function()
+		--       local function root_file(files)
+		--         return function(_, ctx)
+		--           return vim.fs.root(ctx.dirname, files)
+		--         end
+		--       end
+		--       return root_file({ ".sqlfluff", "dbt_project.yml" })
+		--     end)(),
+		--   },
 		-- },
 	},
+
 	config = function(_, opts)
 		require("conform").setup(opts)
 
+		-- Commands to toggle autoformatting globally or per buffer
 		vim.api.nvim_create_user_command("FormatDisable", function(args)
 			if args.bang then
-				-- :FormatDisable! disables autoformat for this buffer only
 				vim.b.disable_autoformat = true
 			else
-				-- :FormatDisable disables autoformat globally
 				vim.g.disable_autoformat = true
 			end
 		end, {
 			desc = "Disable autoformat-on-save",
-			bang = true, -- allows the ! variant
+			bang = true,
 		})
 
 		vim.api.nvim_create_user_command("FormatEnable", function()

@@ -10,7 +10,9 @@ return {
 		lint.linters_by_ft = {
 			-- sql = { "sqlfluff" },
 			-- lua = { "stylua" },
-			python = { { "ruff", "pyright", "pylint" } },
+			python = { "ruff", "pylint" },
+			-- python = { "ruff" },
+			-- toml = { "prettier" },
 		}
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
@@ -22,7 +24,7 @@ return {
 			end,
 		})
 
-		vim.keymap.set("n", "<leader>l", function()
+		vim.keymap.set("n", "<leader>lt", function()
 			lint.try_lint()
 		end, { desc = "Trigger linting for current file" })
 	end,
