@@ -1,5 +1,6 @@
 -- Initialize base46
 vim.g.base46_cache = vim.fn.stdpath("data") .. "/base46_cache/"
+
 --- Initialize lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -12,33 +13,29 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 		lazypath,
 	})
 end
+
+-- (method 2, for non lazyloaders) to load all highlights at once
+for _, v in ipairs(vim.fn.readdir(vim.g.base46_cache)) do
+	dofile(vim.g.base46_cache .. v)
+end
+
+if vim.fn.has("wsl") == 1 then
+	vim.g.clipboard = {
+		name = "WslClipboard",
+		copy = {
+			["+"] = { "clip.exe" },
+			["*"] = { "clip.exe" },
+		},
+		paste = {
+			["+"] = { "powershell.exe", "-Command", "Get-Clipboard -Raw | ForEach-Object { $_ -replace '\\r', '' }" },
+			["*"] = { "powershell.exe", "-Command", "Get-Clipboard -Raw | ForEach-Object { $_ -replace '\\r', '' }" },
+		},
+		cache_enabled = 0,
+	}
+end
+
 vim.opt.rtp:prepend(lazypath)
 
 require("vim-options")
 require("lazy").setup("plugins")
-
--- Yank to EOL
-vim.keymap.set("n", "Y", "y$", { desc = "Yank to EOL" })
-
--- Run @q macro
-vim.keymap.set("n", "Q", "@q", { desc = "Run @q macro" })
-
--- Auto recenter when searching
-vim.keymap.set("n", "n", "nzz")
-vim.keymap.set("n", "N", "Nzz")
-
--- Delete/Change/Replace without Yanking
-vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Replace without yanking" })
-
-vim.keymap.set("n", "<leader>d", '"_d', { desc = "Delete without yanking" })
-vim.keymap.set("n", "<leader>D", '"_D', { desc = "Delete to EOL without yanking" })
-
-vim.keymap.set("n", "<leader>c", '"_c', { desc = "Change without yanking" })
-vim.keymap.set("n", "<leader>C", '"_C', { desc = "Change to EOL without yanking" })
-
--- Yank/Put with OS Clipboard
-vim.keymap.set("", "<leader>y", '"+y', { desc = "Yank to clipboard" })
-vim.keymap.set("", "<leader>Y", '"+y$', { desc = "Yank to EOL to clipboard" })
-
-vim.keymap.set("n", "<leader>p", '"+p', { desc = "Paste after cursor from clipboard" })
-vim.keymap.set("n", "<leader>P", '"+P', { desc = "Paste before cursor from clipboard" })
+require("mappings")
