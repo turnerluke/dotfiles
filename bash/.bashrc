@@ -26,3 +26,8 @@ eval "$(zoxide init --cmd cd bash)"
 
 # thefuck
 eval "$(thefuck --alias)"
+
+# Enable shell autocompletion for uv
+. "$HOME/.local/bin/env"
+eval "$(uv generate-shell-completion bash)"
+eval "$(uvx --generate-shell-completion bash)"
