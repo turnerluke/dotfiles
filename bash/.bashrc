@@ -2,32 +2,29 @@
 # ~/.bashrc
 #
 
-# If not running interactively, don't do anything
+# Exit early if the shell is not interactive
 [[ $- != *i* ]] && return
 
+# Enable colored output for ls and grep
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+
+# Customize the shell prompt to show: [user@host current-directory]$
 PS1='[\u@\h \W]\$ '
 
-# neovim as defaullt editor
+# Set Neovim as the default editor
 export EDITOR=$(which nvim)
-export SYSTEM_EDITOR=$EDITOR
 export SYSTEM_EDITOR=$EDITOR
 
 # starship
 eval "$(starship init bash)"
 
-# virtualenv wrapper config
-export WORKON_HOME=~/.virtualenvs
-source /usr/bin/virtualenvwrapper.sh
-
 # zoxide
 eval "$(zoxide init --cmd cd bash)"
 
-# thefuck
-eval "$(thefuck --alias)"
+# Add user-local binaries to PATH
+export PATH="/home/turner/.local/bin:$PATH"
 
 # Enable shell autocompletion for uv
-. "$HOME/.local/bin/env"
 eval "$(uv generate-shell-completion bash)"
 eval "$(uvx --generate-shell-completion bash)"

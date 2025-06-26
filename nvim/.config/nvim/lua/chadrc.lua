@@ -1,7 +1,7 @@
 local M = {}
 
 M.base46 = {
-	theme = "aquarium",
+	theme = "yoru",
 }
 
 M.ui = {
