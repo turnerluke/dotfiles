@@ -11,15 +11,40 @@ return {
 		end,
 		opts = {
 			ensure_installed = {
-				-- Formatters / linters
-				"prettier", -- YAML, JSON, Markdown, etc.
-				"stylua", -- Lua formatter
-				"sqlfluff", -- SQL formatter
-				"ruff", -- Python linter
-				"mypy", -- Python type checker
-				"isort", -- Python import sorter
-				"debugpy", -- Python debugger
-				-- LSPs (optional if you also declare in mason-lspconfig)
+				-- Python
+				"ruff",
+				"pylint",
+				"mypy",
+				"black",
+				"isort",
+				"debugpy",
+
+				-- Web (JS/TS)
+				"eslint_d",
+
+				-- Shell
+				"shellcheck",
+				"zsh",
+
+				-- Markdown
+				"markdownlint",
+
+				-- Lua
+				"stylua",
+				"luacheck",
+
+				-- YAML / JSON / TOML
+				"yamllint",
+				"jsonlint",
+				"prettier",
+
+				-- SQL
+				"sqlfluff",
+
+				-- Docker
+				"hadolint",
+
+				-- LSPs
 				"pyright",
 				"lua-language-server",
 			},

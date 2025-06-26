@@ -8,11 +8,29 @@ return {
 		local lint = require("lint")
 
 		lint.linters_by_ft = {
-			-- sql = { "sqlfluff" },
-			-- lua = { "stylua" },
+			-- Python
 			python = { "ruff", "pylint" },
-			-- python = { "ruff" },
-			-- toml = { "prettier" },
+			-- Lua
+			lua = { "luacheck" },
+
+			-- Shell
+			sh = { "shellcheck" },
+			bash = { "shellcheck" },
+			zsh = { "zsh" },
+			-- YAML
+			yaml = { "yamllint" },
+
+			-- JSON
+			json = { "jsonlint" },
+
+			-- Markdown
+			markdown = { "markdownlint" },
+
+			-- SQL
+			sql = { "sqlfluff" },
+
+			-- Docker
+			dockerfile = { "hadolint" },
 		}
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
