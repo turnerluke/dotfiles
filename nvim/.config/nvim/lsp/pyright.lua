@@ -1,0 +1,38 @@
+-- return {
+-- 	cmd = { "pyright-langserver", "--stdio" },
+-- 	root_markers = { "pyproject.toml", "setup.py", ".git" },
+-- 	filetypes = { "python" },
+--
+-- 	settings = {
+-- 		-- Let Ruff own formatting, linting, and import-sorting
+-- 		pyright = {
+-- 			disableOrganizeImports = true,
+-- 		},
+--
+-- 		python = {
+-- 			analysis = {
+-- 				-- ignore = { "*" },
+-- 				-- ── Type-checking behaviour ───────────────────────────────
+-- 				typeCheckingMode = "basic", -- 'off' | 'basic' | 'strict'
+-- 				diagnosticMode = "openFilesOnly", -- don't flood unopened files
+-- 				autoSearchPaths = true,
+-- 				useLibraryCodeForTypes = true,
+--
+-- 				-- ── Disable style / lint overlaps (Ruff covers these) ────
+-- 				reportUnusedImport = false,
+-- 				reportUnusedVariable = false,
+-- 				reportDuplicateImport = false,
+-- 				reportMissingImports = false,
+-- 				reportMissingModuleSource = false,
+-- 				reportWildcardImportFromLibrary = false,
+-- 				reportUnboundVariable = false,
+-- 				reportUnusedClass = false,
+-- 				reportPrivateImportUsage = false,
+-- 				reportImportCycles = false,
+-- 			},
+-- 		},
+-- 	},
+--
+-- 	-- Informative logging
+-- 	log_level = vim.lsp.protocol.MessageType.Error,
+-- }

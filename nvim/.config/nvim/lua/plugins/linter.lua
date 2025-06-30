@@ -9,7 +9,8 @@ return {
 
 		lint.linters_by_ft = {
 			-- Python
-			python = { "ruff", "pylint" },
+			-- python = { "ruff", "pylint" },
+			python = { "ruff" },
 			-- Lua
 			lua = { "luacheck" },
 
@@ -32,6 +33,10 @@ return {
 			-- Docker
 			dockerfile = { "hadolint" },
 		}
+
+		-- Disable warnings in .lua files about "vim" global variable
+		local luacheck = lint.linters.luacheck
+		luacheck.args = { "--globals", "vim", "--codes" }
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 

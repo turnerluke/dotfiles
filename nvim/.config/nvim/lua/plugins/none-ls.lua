@@ -15,8 +15,8 @@ return {
 			sources = {
 				-- Python diagnostics
 				-- null_ls.builtins.diagnostics.ruff,
-				null_ls.builtins.diagnostics.mypy,
-				require("none-ls.diagnostics.ruff"),
+				-- null_ls.builtins.diagnostics.mypy,
+				-- require("none-ls.diagnostics.ruff"),
 
 				-- Completion
 				null_ls.builtins.completion.spell,

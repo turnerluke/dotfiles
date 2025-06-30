@@ -36,6 +36,7 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+require("mappings")
+require("lsp")
 require("vim-options")
 require("lazy").setup("plugins")
-require("mappings")
