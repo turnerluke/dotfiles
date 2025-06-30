@@ -1,40 +1,73 @@
+-----------------------------------------------------------------------
+-- keymaps.lua
+-- Helper + curated key-mappings
+-----------------------------------------------------------------------
+
+--- Wrapper for `vim.keymap.set` with default options and description support
+---@param mode  string|string[]  Vim mode(s) – e.g. "n", { "n", "v" }
+---@param lhs   string           Key(s) pressed by the user
+---@param rhs   string|function  Command or Lua function executed
+---@param desc? string           Optional description for tools like which-key or Telescope
+---@param opts? table            Optional extra options to pass to keymap.set
+local function map(mode, lhs, rhs, desc, opts)
+	opts = opts or {}
+	local default_opts = { noremap = true, silent = true }
+	if desc then
+		default_opts.desc = desc
+	end
+	local final_opts = vim.tbl_extend("force", default_opts, opts)
+	vim.keymap.set(mode, lhs, rhs, final_opts)
+end
+
 -- Yank to EOL
-vim.keymap.set("n", "Y", "y$", { desc = "Yank to EOL" })
+map("n", "Y", "y$", "Yank to EOL")
 
 -- Run @q macro
-vim.keymap.set("n", "Q", "@q", { desc = "Run @q macro" })
+map("n", "Q", "@q", "Run @q macro")
 
 -- Auto recenter when searching
-vim.keymap.set("n", "n", "nzz")
-vim.keymap.set("n", "N", "Nzz")
+map("n", "n", "nzz", "Next search result and recenter")
+map("n", "N", "Nzz", "Previous search result and recenter")
 
 -- Delete/Change/Replace without Yanking
-vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Replace without yanking" })
+map("x", "<leader>p", '"_dP', "Replace without yanking")
 
-vim.keymap.set("n", "<leader>d", '"_d', { desc = "Delete without yanking" })
-vim.keymap.set("n", "<leader>D", '"_D', { desc = "Delete to EOL without yanking" })
+map("n", "<leader>d", '"_d', "Delete without yanking")
+map("n", "<leader>D", '"_D', "Delete to EOL without yanking")
 
-vim.keymap.set("n", "<leader>c", '"_c', { desc = "Change without yanking" })
-vim.keymap.set("n", "<leader>C", '"_C', { desc = "Change to EOL without yanking" })
+map("n", "<leader>c", '"_c', "Change without yanking")
+map("n", "<leader>C", '"_C', "Change to EOL without yanking")
 
 -- Yank/Put with OS Clipboard
-vim.keymap.set("", "<leader>y", '"+y', { desc = "Yank to clipboard" })
-vim.keymap.set("", "<leader>Y", '"+y$', { desc = "Yank to EOL to clipboard" })
+map("", "<leader>y", '"+y', "Yank to clipboard")
+map("", "<leader>Y", '"+y$', "Yank to EOL to clipboard")
 
-vim.keymap.set("n", "<leader>p", '"+p', { desc = "Paste after cursor from clipboard" })
-vim.keymap.set("n", "<leader>P", '"+P', { desc = "Paste before cursor from clipboard" })
+map("n", "<leader>p", '"+p', "Paste after cursor from clipboard")
+map("n", "<leader>P", '"+P', "Paste before cursor from clipboard")
 
 -- nvchad tabufline, buffer navigation
-vim.keymap.set("n", "<Tab>", function()
+map("n", "<Tab>", function()
 	require("nvchad.tabufline").next()
-end, { desc = "Next buffer" })
+end, "Next buffer")
 
-vim.keymap.set("n", "<S-Tab>", function()
+map("n", "<S-Tab>", function()
 	require("nvchad.tabufline").prev()
-end, { desc = "Previous buffer" })
+end, "Previous buffer")
+
+-- Close buffer (works with nvchad.tabufline)
+map("n", "<leader>x", function()
+	require("nvchad.tabufline").close_buffer()
+end, "Close buffer")
 
 -- nvchad tabufline, tab navigation
-vim.keymap.set("n", "gt", ":tabnext<CR>", { desc = "Next tab" })
-vim.keymap.set("n", "gT", ":tabprev<CR>", { desc = "Previous tab" })
-vim.keymap.set("n", "<leader>t", ":tabnew<CR>", { desc = "Open new tab" })
-vim.keymap.set("n", "<leader>q", ":tabclose<CR>", { desc = "Close current tab" })
+map("n", "gt", ":tabnext<CR>", "Next tab")
+map("n", "gT", ":tabprev<CR>", "Previous tab")
+map("n", "<leader>t", ":tabnew<CR>", "Open new tab")
+map("n", "<leader>q", ":tabclose<CR>", "Close current tab")
+
+-- Stay in visual mode after indenting or unindenting
+map("v", ">", ">gv", "Indent and keep selection")
+map("v", "<", "<gv", "Unindent and keep selection")
+
+-- Disable accidentally suspending Neovim with Ctrl-z
+map("n", "<C-z>", "<Nop>", "Nothing (prevent suspension)")
