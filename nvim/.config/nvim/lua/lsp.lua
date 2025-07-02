@@ -4,6 +4,7 @@ vim.lsp.enable({
 	"lua_ls",
 	"ruff",
 	"pyright",
+	"ty",
 })
 
 vim.diagnostic.config({
