@@ -1,4 +1,9 @@
+# lazygit config
+# Defaults:
+# https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
+---
 gui:
+  # Catppuccin theme
   theme:
     activeBorderColor:
       - "#eba0ac"
@@ -19,5 +24,11 @@ gui:
       - "#cdd6f4"
     searchingActiveBorderColor:
       - "#f9e2af"
+  # Allows file icons
+  nerdFontsVersion: 3
+  # Remove line with keybindings and donations/questions pages
+  showBottomLine: false
+  # Remove the root item
+  showRootItemInFileTree: false
 authorColors:
   "*": "#b4befe"
