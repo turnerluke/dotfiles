@@ -46,28 +46,29 @@ return {
 			yaml = { "prettier" },
 			toml = { "prettier" },
 			lua = { "stylua" },
-			python = { "ruff" }, -- could add "black", "isort" if desired
+			-- python = { "ruff" },
+			python = { "ruff_fix", "ruff_format", "isort" },
 			sql = { "sqlfluff" },
+			markdown = { "markdownlint" },
 		},
-
-		-- Example override for sqlfluff with dbt support
-		-- formatters = {
-		--   sqlfluff = {
-		--     inherit = false,
-		--     command = "sqlfluff",
-		--     args = { "fix", "$FILENAME" },
-		--     stdin = false,
-		--     tmpfile_format = "conform.$RANDOM.$FILENAME",
-		--     cwd = (function()
-		--       local function root_file(files)
-		--         return function(_, ctx)
-		--           return vim.fs.root(ctx.dirname, files)
-		--         end
-		--       end
-		--       return root_file({ ".sqlfluff", "dbt_project.yml" })
-		--     end)(),
-		--   },
-		-- },
+		-- Custom formatter definitions
+		formatters = {
+			ruff_fix = {
+				command = "ruff",
+				args = { "check", "--fix-only", "--stdin-filename", "$FILENAME", "-" },
+				stdin = true,
+				-- Only run ruff_fix if there are actual ruff errors to fix
+				condition = function(self, ctx)
+					local util = require("conform.util")
+					return util.from_node_modules("ruff")(self, ctx)
+				end,
+			},
+			ruff_format = {
+				command = "ruff",
+				args = { "format", "--stdin-filename", "$FILENAME", "-" },
+				stdin = true,
+			},
+		},
 	},
 
 	config = function(_, opts)
