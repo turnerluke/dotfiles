@@ -1,10 +1,15 @@
 return {
+
+	-- Command and arguments to start the server
 	cmd = {
 		"lua-language-server",
 	},
+
+	-- Filetypes to auto-attach to
 	filetypes = {
 		"lua",
 	},
+
 	root_markers = {
 		".git",
 		".luacheckrc",

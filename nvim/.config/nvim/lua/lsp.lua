@@ -1,12 +1,20 @@
 -- lsp.lua - Language Server Protocol integration
 
+-- Enable lsps configured in nvim/.config/nvim/lsp/
 vim.lsp.enable({
+	-- lua
 	"lua_ls",
+
+	-- python
 	"ruff",
 	"basedpyright",
 	"ty",
+
+	-- toml, yaml, markdown, json, js, ts, html, css
+	"prettier",
 })
 
+-- Diagnostics config
 vim.diagnostic.config({
 	virtual_lines = true,
 	-- virtual_text = true,
@@ -30,3 +38,19 @@ vim.diagnostic.config({
 		},
 	},
 })
+
+-- Built in auto-completion disabled
+--
+-- -- Enable builtin auto-completion
+-- vim.api.nvim_create_autocmd("LspAttach", {
+-- 	callback = function(ev)
+-- 		local client = vim.lsp.get_client_by_id(ev.data.client_id)
+-- 		if client:supports_method("textDocument/completion") then
+-- 			vim.opt.completeopt = { "menu", "menuone", "noinsert", "fuzzy", "popup" }
+-- 			vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+-- 			vim.keymap.set("i", "<C-Space>", function()
+-- 				vim.lsp.completion.get()
+-- 			end, { desc = "Get autocomplete suggestions" })
+-- 		end
+-- 	end,
+-- })
