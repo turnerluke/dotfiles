@@ -48,6 +48,7 @@ return {
 			lua = { "stylua" },
 			-- python = { "ruff" },
 			python = { "ruff_fix", "ruff_format", "isort" },
+			-- python = { "ruff_fix", "ruff_format", "isort" }, -- removed isort to prevent conflicts
 			sql = { "sqlfluff" },
 			markdown = { "markdownlint" },
 		},

@@ -9,7 +9,6 @@ return {
 
 		lint.linters_by_ft = {
 			-- Python
-			-- python = { "ruff", "pylint" },
 			python = { "ruff" },
 			-- Lua
 			lua = { "luacheck" },
