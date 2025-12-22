@@ -1,0 +1,23 @@
+---
+description: "Add a new tool to enforce-uv.sh"
+argument-hint: "tool-name"
+allowed-tools: ["Read", "Edit"]
+---
+
+Add {{$1}} to the enforce-uv.sh script.
+
+Current file: @~/.claude/hooks/enforce-uv.sh
+
+1. Read the current UV_TOOLS array
+2. Add {{$1}} to the list (alphabetically)
+3. Update the file
+4. Confirm the tool is added
+
+Example tools to add:
+- ipython
+- jupyter
+- sphinx-build
+- pre-commit
+- twine
+
+After adding, {{$1}} will be automatically prefixed with `uv run`.

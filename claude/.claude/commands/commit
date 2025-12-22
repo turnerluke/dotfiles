@@ -1,0 +1,18 @@
+---
+description: "Create a well-formatted git commit"
+allowed-tools: ["Bash"]
+---
+
+!git status
+!git diff --staged
+
+Based on the changes above, create a commit following conventional commits:
+
+Format: `type(scope): description`
+
+Types: feat, fix, docs, style, refactor, test, chore
+
+1. Review staged changes
+2. Write concise, descriptive commit message
+3. Create the commit
+4. Show the commit log

@@ -1,0 +1,39 @@
+---
+description: "Refactor code for better quality without changing behavior"
+argument-hint: "filepath"
+allowed-tools: ["Read", "Edit", "Write"]
+---
+
+Refactor this code while maintaining existing behavior:
+@{{$1}}
+
+Focus on:
+
+1. **Code Clarity**
+   - Improve naming (variables, functions, classes)
+   - Extract complex expressions into named variables
+   - Add explanatory comments for non-obvious logic
+
+2. **Structure**
+   - Extract repeated code into functions
+   - Simplify nested conditionals
+   - Reduce function complexity
+   - Improve class organization
+
+3. **Modern Patterns**
+   - Use language-specific best practices
+   - Apply appropriate design patterns
+   - Leverage standard library features
+
+4. **Type Safety**
+   - Add/improve type hints (Python)
+   - Strengthen types (TypeScript)
+   - Remove use of `any` or untyped code
+
+**Important**:
+- Maintain exact behavior (no functional changes)
+- Preserve all existing tests
+- Keep the same public API
+- Document what changed and why
+
+After refactoring, explain the improvements made.

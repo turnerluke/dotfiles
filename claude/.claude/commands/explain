@@ -1,0 +1,15 @@
+---
+description: "Explain a concept or code in simple terms"
+argument-hint: "topic or filepath"
+---
+
+Explain {{$1}} clearly and concisely:
+
+1. **Core Concept**: One-sentence definition
+2. **Why It Matters**: Practical importance
+3. **How It Works**: Key mechanisms
+4. **Common Patterns**: Typical usage examples
+5. **Pitfalls**: Common mistakes to avoid
+6. **Further Reading**: Related topics
+
+Use examples and analogies where helpful.

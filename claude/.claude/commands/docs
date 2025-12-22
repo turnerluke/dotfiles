@@ -1,0 +1,21 @@
+---
+description: "Generate documentation for code"
+argument-hint: "filepath"
+allowed-tools: ["Read", "Edit"]
+---
+
+Generate or improve documentation for:
+@{{$1}}
+
+Include:
+- Clear docstrings for functions/classes
+- Parameter descriptions with types
+- Return value documentation
+- Usage examples
+- Error conditions
+- Notes for complex logic
+
+Follow language conventions:
+- Python: Google-style docstrings
+- TypeScript/JavaScript: JSDoc
+- Keep examples realistic and practical

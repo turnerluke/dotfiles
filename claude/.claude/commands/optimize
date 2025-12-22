@@ -1,0 +1,58 @@
+---
+description: "Optimize code for performance"
+argument-hint: "filepath"
+allowed-tools: ["Read", "Edit", "Bash"]
+---
+
+Optimize this code for better performance:
+@{{$1}}
+
+## Performance Analysis
+
+1. **Profile First**
+   - Identify bottlenecks (don't guess)
+   - Measure current performance
+   - Set optimization targets
+
+2. **Common Optimizations**
+
+   **Python:**
+   - Use generators for large datasets
+   - Leverage built-in functions (map, filter)
+   - Consider caching with `@lru_cache`
+   - Use set/dict for lookups (not list)
+   - Avoid repeated attribute lookups
+   - Use list comprehensions over loops
+   - Consider numpy for numeric operations
+
+   **TypeScript/JavaScript:**
+   - Memoization for expensive computations
+   - Debounce/throttle frequent operations
+   - Use efficient data structures
+   - Avoid unnecessary re-renders
+   - Batch DOM operations
+   - Lazy loading for large data
+
+   **SQL:**
+   - Add indexes for frequent queries
+   - Avoid N+1 queries
+   - Use JOINs instead of multiple queries
+   - Limit result sets
+   - Use EXPLAIN to analyze queries
+
+3. **Measure Impact**
+   - Benchmark before/after
+   - Profile again to verify
+   - Check for regressions
+
+4. **Trade-offs**
+   - Consider readability vs performance
+   - Memory vs speed trade-offs
+   - Maintainability impact
+
+Only optimize if:
+- Profiling shows it's a bottleneck
+- Improvement is measurable
+- Code remains maintainable
+
+Provide specific optimizations with benchmarks.

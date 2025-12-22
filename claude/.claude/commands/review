@@ -1,0 +1,16 @@
+---
+description: "Review code for quality, bugs, and best practices"
+argument-hint: "filepath"
+allowed-tools: ["Read", "Edit"]
+---
+
+Review this file for:
+- Code quality and clarity
+- Potential bugs or edge cases
+- Best practices and patterns
+- Performance considerations
+- Documentation completeness
+
+File: @{{$1}}
+
+Provide specific, actionable feedback and suggest improvements.

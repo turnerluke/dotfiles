@@ -1,0 +1,45 @@
+---
+description: "Debug an issue systematically"
+argument-hint: "description or error message"
+allowed-tools: ["Read", "Bash", "Grep", "Glob"]
+---
+
+Debug this issue: {{$1}}
+
+Follow systematic debugging process:
+
+## 1. Understand the Problem
+- What is the expected behavior?
+- What is the actual behavior?
+- When did it start happening?
+- Can you reproduce it consistently?
+
+## 2. Gather Information
+- Read error messages carefully
+- Check logs for relevant entries
+- Review recent changes
+- Identify affected code paths
+
+## 3. Form Hypotheses
+- List possible causes
+- Rank by likelihood
+- Consider edge cases
+
+## 4. Test Hypotheses
+- Add logging/debugging output
+- Test each hypothesis systematically
+- Eliminate possibilities
+
+## 5. Fix and Verify
+- Implement fix
+- Test thoroughly
+- Verify no regressions
+- Document the issue
+
+## 6. Prevent Recurrence
+- Add tests for this scenario
+- Improve error messages
+- Update documentation
+- Consider monitoring/alerts
+
+Provide detailed analysis and actionable recommendations.

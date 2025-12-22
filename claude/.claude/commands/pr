@@ -1,0 +1,58 @@
+---
+description: "Create a comprehensive pull request"
+allowed-tools: ["Bash", "Read", "Glob"]
+---
+
+Create a pull request for current branch.
+
+## Process
+
+1. **Review Changes**
+   !git status
+   !git diff main...HEAD
+
+2. **Generate PR Description**
+
+   Based on commits and changes, create:
+
+   ### Title
+   Clear, concise summary (50 chars)
+
+   ### Description
+   ```markdown
+   ## Summary
+   What does this PR do?
+
+   ## Changes
+   - Change 1
+   - Change 2
+   - Change 3
+
+   ## Testing
+   - [ ] Unit tests added/updated
+   - [ ] Integration tests pass
+   - [ ] Manual testing completed
+
+   ## Screenshots/Examples
+   (if applicable)
+
+   ## Checklist
+   - [ ] Code follows project conventions
+   - [ ] Documentation updated
+   - [ ] No breaking changes (or documented)
+   - [ ] Reviewed own code
+
+   ## Related Issues
+   Closes #XXX
+   ```
+
+3. **Pre-PR Checks**
+   - All tests pass
+   - No linting errors
+   - No merge conflicts
+   - Branch is up to date
+
+4. **Create PR**
+   !gh pr create --title "..." --body "..."
+
+Provide the PR title and description for review before creating.

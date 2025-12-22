@@ -1,0 +1,61 @@
+---
+description: "Create project from template"
+argument-hint: "template-type project-name"
+allowed-tools: ["Bash", "Write"]
+---
+
+Create new project: {{$2}} using template: {{$1}}
+
+Available templates:
+- `python-cli` - Python CLI tool with uv
+- `python-api` - FastAPI project
+- `ts-lib` - TypeScript library
+- `ts-app` - TypeScript application
+
+## Python CLI Template
+
+```bash
+mkdir {{$2}}
+cd {{$2}}
+uv init
+```
+
+Create structure:
+```
+{{$2}}/
+├── src/
+│   └── {{$2}}/
+│       ├── __init__.py
+│       ├── cli.py
+│       └── main.py
+├── tests/
+│   └── test_main.py
+├── README.md
+├── pyproject.toml
+└── .gitignore
+```
+
+## Python API Template
+
+FastAPI project with:
+- API routes
+- Database models (SQLAlchemy)
+- Tests (pytest)
+- Docker setup
+- Documentation
+
+## TypeScript Library Template
+
+- TypeScript + Vitest
+- ESLint + Prettier
+- Build with tsup
+- Package.json configured
+
+## TypeScript App Template
+
+- React/Next.js or Node.js
+- TypeScript strict mode
+- Testing setup
+- CI/CD configuration
+
+Provide complete project structure and initial files.
