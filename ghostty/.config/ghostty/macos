@@ -1,0 +1,4 @@
+# macOS-specific settings
+macos-titlebar-style = tabs
+macos-option-as-alt = true
+window-decoration = true
