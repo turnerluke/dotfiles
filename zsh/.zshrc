@@ -2,7 +2,6 @@
 # ~/.zshrc
 #
 # Zsh configuration for interactive shells.
-# Configures: completion, aliases, editor, prompt (starship), navigation (zoxide), uv
 #
 
 # Exit early if the shell is not interactive
