@@ -14,6 +14,7 @@ COMMON_PACKAGES=(
     bash
     claude
     lazygit
+    linters
     nvim
     starship
     tmux

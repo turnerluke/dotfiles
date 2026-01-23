@@ -1,0 +1,58 @@
+# Default ruff configuration
+# Override per-project with local .ruff.toml
+
+line-length = 128
+indent-width = 4
+target-version = "py313"
+
+exclude = [
+    ".git",
+    ".venv",
+    "venv",
+    "__pycache__",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".ty_cache",
+    "node_modules",
+    "build",
+    "dist",
+    "migrations",
+]
+
+[lint]
+select = ["ALL"]
+ignore = [
+    "D203",   # conflicts with D211
+    "D213",   # conflicts with D212
+    "COM812", # conflicts with formatter
+    "ISC001", # conflicts with formatter
+]
+fixable = ["ALL"]
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[lint.per-file-ignores]
+"**/tests/**/*.py" = [
+    "S101",     # assert
+    "ARG",      # unused args
+    "FBT",      # boolean args
+    "PLR2004",  # magic values
+    "S311",     # random
+    "D",        # docstrings
+    "S105",     # hardcoded passwords
+    "S106",     # hardcoded tokens
+    "SLF001",   # private members
+]
+"**/tests.py" = [
+    "S101", "ARG", "FBT", "PLR2004", "S311", "D", "S105", "S106", "SLF001",
+]
+
+[format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[lint.isort]
+force-single-line = false
+split-on-trailing-comma = true
+combine-as-imports = true

@@ -1,0 +1,48 @@
+# Default yamllint configuration
+
+extends: default
+
+rules:
+  line-length:
+    max: 128
+    level: error
+    allow-non-breakable-words: true
+    allow-non-breakable-inline-mappings: true
+
+  truthy:
+    allowed-values: ['true', 'false', 'on', 'off', 'yes', 'no']
+    check-keys: false
+
+  indentation:
+    spaces: 2
+    indent-sequences: true
+    check-multi-line-strings: false
+
+  comments:
+    require-starting-space: true
+    ignore-shebangs: true
+    min-spaces-from-content: 1
+
+  comments-indentation: disable
+  document-start: disable
+
+  brackets:
+    min-spaces-inside: 0
+    max-spaces-inside: 0
+
+  braces:
+    min-spaces-inside: 0
+    max-spaces-inside: 0
+
+  empty-lines:
+    max: 2
+    max-start: 0
+    max-end: 0
+
+  trailing-spaces: enable
+  key-duplicates: enable
+
+ignore: |
+  .venv/
+  venv/
+  node_modules/

@@ -1,0 +1,22 @@
+# Default hadolint configuration
+
+ignored:
+  - DL3008  # apt pin versions (prefer flexibility)
+  - DL3013  # pip pin versions (use lockfile instead)
+
+trustedRegistries:
+  - docker.io
+  - ghcr.io
+  - gcr.io
+
+override:
+  error:
+    - DL3003  # use WORKDIR
+    - DL3020  # use COPY not ADD
+    - DL4006  # set pipefail
+  warning:
+    - DL3015  # --no-install-recommends
+  info:
+    - DL3007  # using latest
+
+failure-threshold: warning

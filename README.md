@@ -27,6 +27,7 @@ Requires `stow` (`brew install stow` / `pacman -S stow` / `apt install stow`).
 | ghostty, kitty, alacritty | Terminal emulators |
 | starship | Cross-shell prompt |
 | lazygit | Git TUI |
+| linters | Default configs: ruff, yamllint, hadolint, markdownlint, prettier |
 | claude | Claude Code CLI settings |
 | hyprland, dwm, gnome | Window managers (Linux) |
 | waybar, polybar, rofi, wofi | Bars and launchers (Linux) |
