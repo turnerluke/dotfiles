@@ -3,12 +3,17 @@
 -- and configures diagnostics, keymaps, and autoformatting.
 
 return {
-	-- Mason: Manages installation of formatters/linters (non-LSP tools)
+	-- Mason: Manages installation of LSP servers, formatters, and linters
 	{
 		"williamboman/mason.nvim",
 		config = function()
 			require("mason").setup()
 		end,
+	},
+	-- Mason Tool Installer: Auto-installs formatters, linters, and other tools
+	{
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		dependencies = { "williamboman/mason.nvim" },
 		opts = {
 			ensure_installed = {
 				-- Python
@@ -21,14 +26,13 @@ return {
 				"debugpy",
 
 				-- Web (JS/TS)
-				"eslint_d",
+				-- "eslint_d",
 
 				-- Shell
 				"shellcheck",
-				"zsh",
 
 				-- Markdown
-				"markdownlint",
+				-- "markdownlint",
 
 				-- Lua
 				"stylua",
@@ -36,8 +40,8 @@ return {
 
 				-- YAML / JSON / TOML
 				"yamllint",
-				"jsonlint",
-				"prettier",
+				-- "jsonlint",
+				-- "prettier",
 
 				-- SQL
 				"sqlfluff",
@@ -46,7 +50,6 @@ return {
 				"hadolint",
 
 				-- LSPs
-				"pyright",
 				"lua-language-server",
 			},
 		},
@@ -58,7 +61,6 @@ return {
 		opts = {
 			ensure_installed = {
 				"lua_ls",
-				"pyright",
 				"ruff",
 				"ty",
 			},
