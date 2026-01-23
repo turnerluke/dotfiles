@@ -57,29 +57,68 @@
       "date",
       "echo",
       "printf",
+      "cd*",
+      "tree*",
+
       "git status",
       "git log",
       "git diff",
       "git show",
       "git branch",
       "git remote",
+
       "uv sync",
       "uv run pytest*",
       "uv run ruff check*",
       "uv run ruff format*",
       "uv run sqlfluff lint*",
       "uv run sqlfluff fix*",
+
       "markdownlint*",
       "yamllint*",
       "shellcheck*",
       "prettier --write*",
       "pre-commit run*",
+
       "uv run dagster list*",
       "uv run dbt compile*",
       "uv run dbt parse*",
       "uv run dbt docs generate*",
-      "cd*",
-      "tree*"
+
+      "aws sts get-caller-identity",
+
+      "aws ecs describe-services*",
+      "aws ecs describe-tasks*",
+      "aws ecs describe-clusters*",
+      "aws ecs describe-task-definition*",
+      "aws ecs list-tasks*",
+      "aws ecs list-services*",
+      "aws ecs list-clusters*",
+
+      "aws cloudformation describe-stacks*",
+      "aws cloudformation describe-stack-events*",
+      "aws cloudformation describe-stack-resources*",
+      "aws cloudformation list-stacks*",
+
+      "aws logs tail*",
+      "aws logs describe-log-groups*",
+      "aws logs describe-log-streams*",
+      "aws logs get-log-events*",
+      "aws logs filter-log-events*",
+
+      "aws elbv2 describe-load-balancers*",
+      "aws elbv2 describe-listeners*",
+      "aws elbv2 describe-target-groups*",
+      "aws elbv2 describe-target-health*",
+
+      "aws ec2 describe-instances*",
+      "aws ec2 describe-security-groups*",
+
+      "aws ecr describe-repositories*",
+      "aws ecr describe-images*",
+
+      "aws lambda list-functions*",
+      "aws lambda get-function*"
     ],
     "alwaysDeny": [
       "rm -rf /",
