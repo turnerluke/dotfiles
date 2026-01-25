@@ -56,7 +56,7 @@
 
 ## Environment
 
-- **OS**: Linux (WSL2)
+- **OS**: macOS / Linux
 - **Shell**: Bash
 - **Primary Languages**: Python, TypeScript, JavaScript
 - **Common Tools**: git, uv, docker, npm

@@ -64,20 +64,17 @@ Personal preferences in `CLAUDE.md`:
 
 Auto-loaded in every session via `memory.include` setting.
 
-## Command Policies
+## Permissions
 
-**Always Allow**:
+**Allow** (no prompt):
 - Read-only: `ls`, `cat`, `grep`, `find`, etc.
 - Git read: `git status`, `git log`, `git diff`
-- Formatters: `ruff`, `prettier`, `pre-commit`
+- Formatters: `uv run ruff`, `prettier`, `pre-commit`
 
-**Always Ask**:
-- Destructive: `rm`, `mv`, `git push`
-- Installation: `uv add`, `npm install`
-- System: `sudo`, `systemctl`
-
-**Always Deny**:
+**Deny** (blocked):
 - Dangerous: `rm -rf /`, `chmod 777`, `curl | sh`
+
+Everything else prompts for confirmation.
 
 ## Usage
 

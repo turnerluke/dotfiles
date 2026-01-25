@@ -38,8 +38,8 @@
       }
     ]
   },
-  "commandPolicies": {
-    "alwaysAllow": [
+  "permissions": {
+    "allow": [
       "ls",
       "cat",
       "head",
@@ -120,7 +120,7 @@
       "aws lambda list-functions*",
       "aws lambda get-function*"
     ],
-    "alwaysDeny": [
+    "deny": [
       "rm -rf /",
       "sudo rm*",
       "format*",
@@ -133,65 +133,7 @@
       "wget * | sh",
       "curl * | bash",
       "wget * | bash"
-    ],
-    "alwaysAsk": [
-      "rm*",
-      "mv*",
-      "cp -r*",
-      "sudo*",
-      "git push*",
-      "git commit*",
-      "git merge*",
-      "git rebase*",
-      "git reset --hard*",
-      "git checkout*",
-      "git branch -D*",
-      "npm install*",
-      "npm uninstall*",
-      "pip install*",
-      "pip uninstall*",
-      "uv add*",
-      "uv remove*",
-      "uv run dagster dev*",
-      "uv run dbt run*",
-      "uv run dbt test*",
-      "uv run dbt seed*",
-      "uv run cdk deploy*",
-      "uv run cdk destroy*",
-      "pre-commit install*",
-      "chmod*",
-      "chown*",
-      "systemctl*",
-      "service*",
-      "kill*",
-      "killall*",
-      "reboot",
-      "shutdown*",
-      "docker run*",
-      "docker-compose up*",
-      "docker-compose down*"
     ]
-  },
-  "editor": {
-    "preferredEditor": "code",
-    "openFileInEditor": false
-  },
-  "terminal": {
-    "shell": "/bin/bash",
-    "timeout": 30000
-  },
-  "ai": {
-    "temperature": 0.1,
-    "maxTokens": 4096
-  },
-  "notifications": {
-    "showSuccess": true,
-    "showWarnings": true,
-    "showErrors": true
-  },
-  "workspace": {
-    "autoSave": true,
-    "backupEnabled": true
   },
   "memory": {
     "include": [
