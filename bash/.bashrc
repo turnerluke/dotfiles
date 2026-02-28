@@ -46,3 +46,26 @@ eval "$(zoxide init --cmd cd bash)"
 # uv - Python package manager
 eval "$(uv generate-shell-completion bash)"
 eval "$(uvx --generate-shell-completion bash)"
+
+# ---------------------------------------------------------
+# Functions
+# ---------------------------------------------------------
+# lazygit wrapper with bare repo worktree support
+lg() {
+    export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
+    if [ -f .git ] && [ -d .bare ]; then
+        local wt
+        wt=$(git worktree list --porcelain | awk '/^worktree / && !/\.bare$/ {print $2; exit}')
+        if [ -n "$wt" ]; then
+            lazygit -p "$wt"
+        else
+            echo "No linked worktrees found. Create one with: git worktree add <name>"
+        fi
+    else
+        lazygit "$@"
+    fi
+    if [ -f "$LAZYGIT_NEW_DIR_FILE" ]; then
+        cd "$(cat "$LAZYGIT_NEW_DIR_FILE")"
+        rm -f "$LAZYGIT_NEW_DIR_FILE"
+    fi
+}

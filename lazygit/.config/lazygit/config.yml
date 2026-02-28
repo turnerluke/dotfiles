@@ -33,7 +33,20 @@ gui:
 authorColors:
   "*": "#b4befe"
 
+worktrees:
+  autoSwitchRepo: true
+
 customCommands:
+  # Create worktree at repo root (sibling to other worktrees)
+  - key: "W"
+    context: "worktrees"
+    description: "Create worktree at repo root"
+    prompts:
+      - type: "input"
+        title: "Branch name (worktree will be created at repo root):"
+        key: "Branch"
+    command: |
+      git worktree add "$(git rev-parse --show-toplevel)/../{{.Form.Branch}}" -b "{{.Form.Branch}}"
   # Claude git commit messages
   - key: "C"
     context: "files"
