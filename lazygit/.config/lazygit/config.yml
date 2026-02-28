@@ -46,7 +46,7 @@ customCommands:
         title: "Branch name (worktree will be created at repo root):"
         key: "Branch"
     command: |
-      git worktree add "$(git rev-parse --show-toplevel)/../{{.Form.Branch}}" -b "{{.Form.Branch}}"
+      git worktree add "$(git rev-parse --show-toplevel)/../$(echo '{{.Form.Branch}}' | rev | cut -d/ -f1 | rev)" -b "{{.Form.Branch}}"
   # Claude git commit messages
   - key: "C"
     context: "files"
