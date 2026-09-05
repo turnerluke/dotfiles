@@ -17,6 +17,7 @@ else
     alias ls='ls --color=auto'
 fi
 alias grep='grep --color=auto'
+alias yolo='claude --dangerously-skip-permissions'
 
 # ---------------------------------------------------------
 # Environment
@@ -25,8 +26,14 @@ alias grep='grep --color=auto'
 export EDITOR=$(which nvim)
 export SYSTEM_EDITOR=$EDITOR
 
-# Add user-local binaries to PATH
-export PATH="$HOME/.local/bin:$PATH"
+# macOS appends so /opt/homebrew/bin/claude (npm) wins over the native Claude
+# installer's symlink at ~/.local/bin/claude. Elsewhere, prepend ~/.local/bin
+# as usual so personal scripts can shadow system tools.
+if [[ "$OSTYPE" == darwin* ]]; then
+    export PATH="$PATH:$HOME/.local/bin"
+else
+    export PATH="$HOME/.local/bin:$PATH"
+fi
 
 # ---------------------------------------------------------
 # Prompt

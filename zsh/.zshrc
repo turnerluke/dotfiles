@@ -23,6 +23,7 @@ else
     alias ls='ls --color=auto'
 fi
 alias grep='grep --color=auto'
+alias yolo='claude --dangerously-skip-permissions'
 
 # ---------------------------------------------------------
 # Environment
